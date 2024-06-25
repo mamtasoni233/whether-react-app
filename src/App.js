@@ -12,15 +12,18 @@ import { useState } from 'react';
 function App() {
   let [city, setCity] = useState('');
   let [wdetail, setWdetail] = useState();
+  let [isLoading, setIsloading] = useState(false);
   let getData = (e) => {
     e.preventDefault();
     if (city !== '') {
+      setIsloading(true);
       fetch(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f00c38e0279b7bc85480c3fe775d518c`
       )
         .then((res) => res.json())
         .then((finalData) => {
           setWdetail(finalData);
+          setIsloading(false);
         });
       setCity('');
     } else {
@@ -59,6 +62,12 @@ function App() {
               </button>
             </div>
           </form>
+          <img
+            src="https://media0.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.webp?cid=790b7611qcek9teytbrmolwwhj7591wr93chojqawimmpg2h&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+            alt="loading-img"
+            width={400}
+            className={`abs left-5 ${isLoading ? '' : 'hidden'}`}
+          />
           {wdetail && wdetail.cod !== '404' ? (
             <>
               <h1>
