@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
 import { faMoon } from '@fortawesome/free-solid-svg-icons/faMoon';
@@ -7,12 +8,12 @@ import { faThermometerHalf } from '@fortawesome/free-solid-svg-icons/faThermomet
 import { faTint } from '@fortawesome/free-solid-svg-icons/faTint';
 import { faWind } from '@fortawesome/free-solid-svg-icons/faWind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
 
 function App() {
   let [city, setCity] = useState('');
   let [wdetail, setWdetail] = useState();
   let [isLoading, setIsloading] = useState(false);
+  let [counter, setCounter] = useState(1);
   let getData = (e) => {
     e.preventDefault();
     if (city !== '') {
@@ -30,9 +31,17 @@ function App() {
       alert('please enter city name');
     }
   };
+  let changeCounter = () => {
+    setCounter(counter + 1);
+  };
+  useEffect(() => {
+    console.log('Helooo mamta...');
+  }, [counter]); // array is dependency
   return (
     <>
       <div className="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen flex justify-center items-center">
+        {counter}
+        <button onClick={changeCounter}>Count</button>
         <div className="max-w-lg m-auto  bg-white p-8 rounded-md shadow-lg w-full h-auto">
           <h1 className="text-3xl font-semibold mb-6  text-green-500 text-center">
             Weather App UI using Tailwind CSS
