@@ -20,11 +20,9 @@ function App() {
       )
         .then((res) => res.json())
         .then((finalData) => {
-          console.log(finalData);
           setWdetail(finalData);
         });
       setCity('');
-      console.log(wdetail);
     } else {
       alert('please enter city name');
     }
@@ -76,7 +74,8 @@ function App() {
                     Temperature:
                   </span>
                   <span className="text-gray-800 font-medium">
-                    {wdetail.main.temp}°C
+                    {}
+                    {Math.round(wdetail.main.temp - 273.15)}°C
                   </span>
                 </div>
                 <div className="border rounded-md p-3 bg-blue-200 hover:bg-blue-300transition-colors duration-300 ease-in-out">
