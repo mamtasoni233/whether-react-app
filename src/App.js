@@ -1,5 +1,11 @@
 import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
+import { faMoon } from '@fortawesome/free-solid-svg-icons/faMoon';
+import { faSun } from '@fortawesome/free-solid-svg-icons/faSun';
+import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons/faTachometerAlt';
 import { faThermometerHalf } from '@fortawesome/free-solid-svg-icons/faThermometerHalf';
+import { faTint } from '@fortawesome/free-solid-svg-icons/faTint';
+import { faWind } from '@fortawesome/free-solid-svg-icons/faWind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
@@ -55,30 +61,29 @@ function App() {
               </button>
             </div>
           </form>
-          {wdetail && wdetail.cod === '404' ? (
+          {wdetail && wdetail.cod !== '404' ? (
             <>
               <h1>
                 {wdetail.name}, <span>{wdetail.sys.country}</span>
               </h1>
               <div id="weather-info" className="grid grid-cols-2 gap-4">
-                <div className="flex gap-1 border rounded-md p-4 bg-yellow-200 hover:bg-yellow-300 transition-colors duration-300 ease-in-out">
-                  <span>
+                <div className="border rounded-md p-3 bg-yellow-200 hover:bg-yellow-300 transition-colors duration-300 ease-in-out">
+                  <span className="text-gray-900 mr-1">
                     <FontAwesomeIcon
                       icon={faThermometerHalf}
-                      className="text-red-500"
+                      className="text-red-500 text-lg pr-1"
                     />
+                    Temperature:
                   </span>
-                  <span className="text-gray-900">Temperature:</span>
                   <span className="text-gray-800 font-medium">
                     {wdetail.main.temp}°C
                   </span>
                 </div>
-                <div className="border rounded-md p-4 bg-blue-200 hover:bg-blue-300transition-colors duration-300 ease-in-out">
-                  <span className="text-gray-900">
-                    {/* <i className="fas fa-cloud-sun text-blue-500"></i> */}
+                <div className="border rounded-md p-3 bg-blue-200 hover:bg-blue-300transition-colors duration-300 ease-in-out">
+                  <span className="text-gray-900 mr-2">
                     <FontAwesomeIcon
                       icon={faCloudSun}
-                      className="text-red-500"
+                      className="text-blue-500 text-lg pt-1 mr-1"
                     />
                     Weather:
                   </span>
@@ -86,54 +91,73 @@ function App() {
                     {wdetail.weather[0].description}
                   </span>
                 </div>
-                <div className="border rounded-md p-4 bg-green-200 hover:bg-green-300 transition-colors duration-300 ease-in-out">
-                  <span className="text-gray-900">
-                    <i className="fas fa-tint  text-green-500"></i>
+                <div className="border rounded-md p-3 bg-green-200 hover:bg-green-300 transition-colors duration-300 ease-in-out">
+                  <span className="text-gray-900 mr-2">
+                    <FontAwesomeIcon
+                      icon={faTint}
+                      className="text-green-500 text-lg pt-1 mr-2"
+                    />
                     Humidity:
                   </span>
                   <span className="text-gray-800 font-medium">
                     {wdetail.main.humidity} %
                   </span>
                 </div>
-                <div className="border rounded-md p-4 bg-purple-200 hover:bg-purple-300 transition-colors duration-300 ease-in-out">
-                  <span className="text-gray-900">
-                    <i className="fas fa-wind text-yellow-500"></i>
+                <div className="border rounded-md p-3 bg-purple-200 hover:bg-purple-300 transition-colors duration-300 ease-in-out">
+                  <span className="text-gray-900 mr-2">
+                    <FontAwesomeIcon
+                      icon={faWind}
+                      className="text-yellow-500 text-lg pt-1 mr-1"
+                    />
                     Wind Speed:
                   </span>
                   <span className="text-gray-800 font-medium">
                     {wdetail.wind.speed} km/h
                   </span>
                 </div>
-                <div className="border rounded-md p-4 bg-red-200 hover:bg-red-300 transition-colors duration-300 ease-in-out">
-                  <span className="text-gray-900">
-                    <i className="fas fa-eye  text-indigo-500"></i>
+                <div className="border rounded-md p-3 bg-red-200 hover:bg-red-300 transition-colors duration-300 ease-in-out">
+                  <span className="text-gray-900 mr-2">
+                    <FontAwesomeIcon
+                      icon={faEye}
+                      className="text-indigo-500 text-lg pt-1 mr-1"
+                    />
                     Visibility:
                   </span>
                   <span className="text-gray-800 font-medium">
                     {wdetail.visibility / 1000} km
                   </span>
                 </div>
-                <div className="border rounded-md p-4 bg-pink-200  hover:bg-pink-300 transition-colors duration-300 ease-in-out">
-                  <span className="text-gray-900">
-                    <i className="fas fa-tachometer-alt text-yellow-400"></i>
+                <div className="border rounded-md p-3 bg-pink-200  hover:bg-pink-300 transition-colors duration-300 ease-in-out">
+                  <span className="text-gray-900 mr-2">
+                    <FontAwesomeIcon
+                      icon={faTachometerAlt}
+                      className="text-pink-500 text-lg pt-1 mr-1"
+                    />
                     Pressure:
                   </span>
                   <span className="text-gray-800 font-medium">
                     {wdetail.main.pressure} hPa
                   </span>
                 </div>
-                <div className="border rounded-md p-4  bg-yellow-200  hover:bg-yellow-300 transition-colors duration-300 ease-in-out">
-                  <span className="text-gray-900">
-                    <i className="fas fa-sun text-yellow-500"></i>
+                <div className="border rounded-md p-3  bg-yellow-200  hover:bg-yellow-300 transition-colors duration-300 ease-in-out">
+                  <span className="text-gray-900 mr-2">
+                    <FontAwesomeIcon
+                      icon={faSun}
+                      className="text-yellow-500 text-lg pt-1 mr-1"
+                    />
                     Sunrise:
                   </span>
                   <span className="text-gray-800 font-medium">
                     {new Date(wdetail.sys.sunrise * 1000).toLocaleTimeString()}
                   </span>
                 </div>
-                <div className="border rounded-md p-4  bg-gray-300 hover:bg-gray-400transition-colors duration-300 ease-in-out">
-                  <span className="text-gray-900">
-                    <i className="fas fa-moon  text-yellow-400"></i> Sunset:
+                <div className="border rounded-md p-3  bg-gray-300 hover:bg-gray-400transition-colors duration-300 ease-in-out">
+                  <span className="text-gray-900 mr-2">
+                    <FontAwesomeIcon
+                      icon={faMoon}
+                      className="text-yellow-500 text-lg pt-3 mr-1"
+                    />
+                    Sunset:
                   </span>
                   <span className="text-gray-800 font-medium">
                     {new Date(wdetail.sys.sunset * 1000).toLocaleTimeString()}
@@ -142,7 +166,9 @@ function App() {
               </div>
             </>
           ) : (
-            <p>{wdetail.message}</p>
+            <div className="flex justify-center">
+              <h3>{wdetail && wdetail.message}</h3>
+            </div>
           )}
         </div>
       </div>
